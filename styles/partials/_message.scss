@@ -1,0 +1,16 @@
+.message{
+	&--container{
+		float:left;
+		margin: 2em;
+		padding: 2em;
+		background: $message-bg-color;
+		box-shadow: 10px 10px 30px rgba(black, 0.25);
+	}
+	&--text{
+
+	}
+	&--translate-button{
+
+	}
+}
+body{background: white;}

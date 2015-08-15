@@ -5,7 +5,7 @@ $input-section-bg: $white;
 
 .input-section{
 	&--container{
-		position: absolute;
+		position: fixed;
 		background: $input-section-bg;
 		bottom: 0;
 		padding: 2em;
@@ -23,5 +23,6 @@ $input-section-bg: $white;
 		margin-left: 1em;
 		font-size: 1.5em;
 		color: $input-section-button-color;
+		cursor: pointer;
 	}
 }

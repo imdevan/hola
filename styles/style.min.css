@@ -42,5 +42,5 @@ table{border-collapse:collapse;border-spacing:0}
 .message--container-RIGHT{float:right}
 .message--translate-button{border:1px solid #5f9ea0;border-radius:50%;display:block;height:3em;width:3em;position:absolute;top:2em;right:2em}
 .input-section--container{position:absolute;background:#fff;bottom:0;padding:2em;display:block;text-align:center;width:100%;border-top:1px solid rgba(95,158,160,.25)}
-.input-section--input-box{font-size:1.5em;height:1.5em;min-width:10em}
+.input-section--input-box{font-size:1.5em;height:1.5em;min-width:500px}
 .input-section--translate-button{margin-left:1em;font-size:1.5em;color:rgba(95,158,160,.5)}

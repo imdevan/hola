@@ -37,3 +37,4 @@ input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-sea
 fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
 table{border-collapse:collapse;border-spacing:0}
 .message--container{float:left;margin:2em;padding:2em;background:#fff;box-shadow:10px 10px 30px rgba(0,0,0,.25)}
+.input-section--container{position:relative;display:block}

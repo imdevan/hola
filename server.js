@@ -13,7 +13,7 @@ var twilio = require(path.resolve('./js', 'twilio.js'));
 
 var endUserNumber = "";
 
-app.use(express.static(__dirname + ''));
+app.use(express.static(__dirname));
 app.get('/', function(req, res){
   res.sendfile('index.html');
 });
@@ -48,6 +48,7 @@ io.on('connection', function(socket){
   });
   
   socket.on('message', function(data){
+    console.log("Got Here as well!");
     twilio.sendMessage(data.number, data.message);
   });
   

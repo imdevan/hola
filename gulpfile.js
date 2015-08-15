@@ -24,6 +24,14 @@ var gulp            = require('gulp'),
     del             = require('del'),
     runSequence     = require('run-sequence');
 
+var scssLint        = require('gulp-scss-lint');
+var scssLintStylish = require('gulp-scss-lint-stylish');
+ 
+gulp.task('scss-lint', function()
+{
+    gulp.src('./styles/**/*.scss')
+        .pipe( scssLint({ customReport: scssLintStylish }) );
+});
 
 // optimize images
 gulp.task('images', function() {
@@ -121,9 +129,7 @@ gulp.task('concat', function() {
 gulp.task('sass', function() {
   return gulp.src('styles/style.scss')
     .pipe($.sourcemaps.init())
-    .pipe($.sass({
-      style: 'expanded'
-    }))
+    .pipe($.sass())
     .on('error', $.notify.onError({
       title: 'SASS Failed',
       message: 'Error(s) occurred during compile!'

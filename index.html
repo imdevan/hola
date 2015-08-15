@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-csp="" ng-app="boilerplate"> <!--<![endif]-->
-
+	
 	<head>
 
 		<base href="/">
@@ -32,18 +32,10 @@
 
 	</head>
 
-	<body class="main-wrapper">
+
 	
-		<!--[if lt IE 8]>
-		    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-		<![endif]-->
-
-		<!-- Navigation -->
-		<main-nav></main-nav>
-
-		<!-- Main view for templates -->
-		<div data-ng-view="" class="container"></div>
-
+	<body class="main-wrapper">
+		<messages></messages>
 	</body>
 
 	<!-- Vendors -->
@@ -69,6 +61,11 @@
 	<!-- build:appcomponents js/appcomponents.js -->
 	<script type="text/javascript" src="app/app.js"></script>
 	<script type="text/javascript" src="app/config.js"></script>
+
+	<!-- Directives -->
+	<script type="text/javascript" src="components/directives/messages.directive.js"></script>
+	<script type="text/javascript" src="components/directives/messages.js"></script>
+	<script type="text/javascript" src="components/directives/main.head.directive.js"></script>
 	<script type="text/javascript" src="components/services/LocalStorage.service.js"></script>
 	<script type="text/javascript" src="components/services/queryService.service.js"></script>
 	<script type="text/javascript" src="components/directives/main.nav.directive.js"></script>

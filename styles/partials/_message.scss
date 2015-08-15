@@ -1,9 +1,20 @@
 $message-bg-color: $white;
 $message-translate-color: cadetblue;
 
-.messages{
+._messages{
 	max-width: 1064px;
 	margin: auto;
+	height: 100%;
+	width: 100%;
+	// position: fixed;
+	overflow-y: scroll;
+	padding-bottom: 5em;
+	vertical-align: bottom;
+	&:after{
+		display: block;
+		content: "";
+		clear: both;
+	}
 }
 .message{
 	&--container{

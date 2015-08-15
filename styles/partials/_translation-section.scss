@@ -1,0 +1,48 @@
+$translation-section-border-color: rgba(cadetblue, 0.25);
+$translation-section-button-color: rgba(cadetblue, 0.5);
+$translation-section-bg: $white;
+
+
+.translation-section{
+	&--container{
+		border-top: 1px solid $translation-section-border-color;
+		text-align: center;
+		display: block;
+		background: $translation-section-bg;
+		position: absolute;
+		// tranform:translateY(100%);
+		z-index: 1;
+		width: 100%;
+	}
+	&--message-content{
+		height: 10em;
+		padding: 3em;
+	}
+	&--button-row{
+		border-top: 1px solid $translation-section-border-color;
+		text-align: center;
+		display: block;
+		bottom: 0;
+		width: 100%;
+		font-size: 1.5em;
+		line-height: 3em;
+		&:after{
+			display: block;
+			content: "";
+			clear: both;
+		}
+	}
+	&--button-row-list{
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		vertical-align: middle;
+	}
+	&--button-row-list-item{
+		display: inline-block;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+}

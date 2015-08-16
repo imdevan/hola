@@ -78,7 +78,6 @@ $(document).ready(function()
 	//query.ascending("createdAt");
 	query.find({
 	  success: function(results) {
-	    console.log(results.length);
 	    for(var i = 0; i < results.length; i++)
 	    {
 	    	console.log(results[i]);
@@ -113,8 +112,6 @@ $(document).ready(function()
 							</div>'
 	    		
 	    		$('#message-conversation').append(elem);
-	    		
-	    		console.log("In here like we are suppose to");
 	        }
 	        else
 	        {

@@ -34,6 +34,7 @@ function load() {
 
 //   }
 
+var otherdata = '';
 var data, tb, tBox = {
     vars: {
         isOpen: false,
@@ -41,7 +42,8 @@ var data, tb, tBox = {
         translateButton: $("#translate-button"),
         checkButton: $("#translate-check-button"),
         sendButton: $("#translate-send-button"),
-        cancelButton: $("#translate-cancel-button")
+        cancelButton: $("#translate-cancel-button"),
+        littlesendButton: $("#translate-translated-send-button")
     },
     init: function () {
         tb = this.vars;
@@ -49,12 +51,12 @@ var data, tb, tBox = {
         tb.sendMessage = this.sendMessage;
     },
     sendMessage: function () {
-
         data = $('#input-section--message-content').val();
         console.log(data);
-        var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair="+selectLang+"|en";
+        console.log(selectLang);
+        var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=" + selectLang + "|en";
         console.log(url);
-
+        console.log("I like this spot");
         var oReq = new XMLHttpRequest();
         oReq.addEventListener('load', function () {
             console.log(JSON.parse(this.responseText).responseData.translatedText);
@@ -97,6 +99,8 @@ var data, tb, tBox = {
                 console.log(JSON.parse(this.responseText).responseData.translatedText);
         		
                 $('#translation-section--message-content').html(JSON.parse(this.responseText).responseData.translatedText);
+                
+                otherdata = JSON.parse(this.responseText).responseData.translatedText;
             });
             oReq.open("get", url, true);
             oReq.send();
@@ -116,6 +120,9 @@ var data, tb, tBox = {
                 console.log(JSON.parse(this.responseText).responseData.translatedText);
         		
                 $('#translation-section--message-content').html(JSON.parse(this.responseText).responseData.translatedText);
+                
+                otherdata = data;
+                data = JSON.parse(this.responseText).responseData.translatedText;
             });
             oReq.open("get", url, true);
             oReq.send();
@@ -130,9 +137,33 @@ var data, tb, tBox = {
             tb.domObj.removeClass("open");
             tb.isOpen = false;
         });
-
+        
         tb.sendButton.on('click', function () {
             tb.sendMessage();
+        });
+        
+        tb.littlesendButton.on('click', function () {
+            var MessageObject = Parse.Object.extend("Message");
+    		var messageObject = new MessageObject();
+    		messageObject.save({sendingNumber: TwilioNumber, LanguageOne: data, LanguageTwo: otherdata});
+            
+            sendMessageToServer(OtherNumber, data);
+            
+            var elem = '<div class="message--container-RIGHT"> \
+							<p class="message--text"> \
+								' + otherdata +' \
+							</p> \
+							<span class="message--translate-button"> \
+								? \
+							</span> \
+						</div>'
+    		
+    		  $('#message-conversation').append(elem);
+            
+            tb.domObj.removeClass("open");
+            tb.isOpen = false;
+            
+            $('#input-section--message-content').val('');
         });
 
         $(document).keyup(function (e) {

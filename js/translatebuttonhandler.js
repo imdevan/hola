@@ -1,22 +1,26 @@
+function load() {
+    function responseText() {
+        var translated = JSON.parse(this.responseText).responseData.translatedText;
+        console.log(translated);
 
-function load(){
-  function responseText () {
-   var translated = JSON.parse(this.responseText).responseData.translatedText;
-   console.log(translated);
-   
-    var MessageObject = Parse.Object.extend("Message");
-    var messageObject = new MessageObject();
-    messageObject.save({sendingNumber: TwilioNumber, BodyNotTranslated: data, BodyTranslated: translated});
-   
-   sendMessageToServer('+12144035793', translated); // after translation
-  }
-  var data = document.getElementById("input-section--message-content").value; // this will be the text before translation
-  var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=es|en";
- 
-  var oReq = new XMLHttpRequest();
-  oReq.addEventListener('load', responseText);
-  oReq.open("get", url, true);
-  oReq.send();
+        var MessageObject = Parse.Object.extend("Message");
+        var messageObject = new MessageObject();
+        messageObject.save({
+            sendingNumber: TwilioNumber,
+            BodyNotTranslated: data,
+            BodyTranslated: translated
+        });
+
+        sendMessageToServer('+12144035793', translated); // after translation
+    }
+    var data = document.getElementById("input-section--message-content").value; // this will be the text before translation
+    var url = "https://api.mymemory.translated.net/get?q=" + data +
+        "&langpair=es|en";
+
+    var oReq = new XMLHttpRequest();
+    oReq.addEventListener('load', responseText);
+    oReq.open("get", url, true);
+    oReq.send();
 }
 
 // { Phonenumber : nunmber, origionaltext : data, translatedtext: data}
@@ -25,9 +29,9 @@ function load(){
 //   conversation:{
 //     [message:{
 //       sent/received
-      
+
 //     }]
-    
+
 //   }
 
 var data, tb, tBox = {
@@ -45,33 +49,41 @@ var data, tb, tBox = {
         tb.sendMessage = this.sendMessage;
     },
     sendMessage: function () {
-        
+
         data = $('#input-section--message-content').val();
         console.log(data);
         var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=es|en";
         console.log(url);
-        
+
         var oReq = new XMLHttpRequest();
-        oReq.addEventListener('load', function(){
+        oReq.addEventListener('load', function () {
             console.log(JSON.parse(this.responseText).responseData.translatedText);
             sendMessageToServer(OtherNumber, JSON.parse(this.response).responseData.translatedText);
-            
-            var elem = '<div class="message--container-RIGHT"> \
-							<p class="message--text"> \
-								' + data +' \
-							</p> \
-							<span class="message--translate-button"> \
-								? \
-							</span> \
-						</div>'
-    		
-    		  $('#message-conversation').append(elem);
-    		  
-    		  var MessageObject = Parse.Object.extend("Message");
-    		  var messageObject = new MessageObject();
-    		  messageObject.save({sendingNumber: TwilioNumber, BodyNotTranslated: data, BodyTranslated: JSON.parse(this.response).responseData.translatedText});
-    		  
-    		  sendPhoneNumberToServer(JSON.parse(this.responseText).responseData.translatedText);
+
+            var elem =
+                '<div class="message--container-RIGHT"> \
+                            <p class="message--text"> \
+                                ' + data + ' \
+                            </p> \
+                            <span class="message--translate-button"> \
+                                ? \
+                            </span> \
+                        </div>'
+
+            $('#message-conversation').append(elem);
+
+            var MessageObject = Parse.Object.extend(
+                "Message");
+            var messageObject = new MessageObject();
+            messageObject.save({
+                sendingNumber: TwilioNumber,
+                BodyNotTranslated: data,
+                BodyTranslated: JSON.parse(this.response)
+                    .responseData.translatedText
+            });
+
+            sendPhoneNumberToServer(JSON.parse(this.responseText)
+                .responseData.translatedText);
         });
         oReq.open("get", url, true);
         oReq.send();
@@ -113,3 +125,28 @@ var data, tb, tBox = {
 
 tBox.init();
 
+var menu, menuApp = {
+    vars: {
+        menuButton: $("#translate-change-lang-button"),
+        menu: $("#language-menu"),
+        mainWrapper: $("#main-wrapper"),
+        menuList: $(".language-menu--list-item")
+    },
+    init: function () {
+        console.log("hi");
+        menu = this.vars;
+        this.bindUIElements();
+    },
+    bindUIElements: function () {
+        console.log("hi");
+        menu.menuButton.click(function () {
+            console.log("hi");
+            menu.mainWrapper.addClass("menu-open ");
+            menu.menu.addClass("menu-open ");
+        });
+        menu.menuList.click(function(){
+            specifiedLanguage = $(this).attr("id");
+        });
+    }
+}
+menuApp.init();

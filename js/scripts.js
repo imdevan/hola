@@ -3,6 +3,8 @@ Parse.initialize("rYhgbAiMXfzb692ANgZXoUVGQkhUOuMSnCY2sHtk", "yTfmNgzwyG2B7OirvN
 var TwilioNumber = "+19152350594";
 var OtherNumber = "+12144035793";
 
+var selectLang = 'es';
+
 var socket;
 
 socket = io();
@@ -48,7 +50,7 @@ socket.on('message',function(data) {
     		
   		}
  		console.log("I received a message!");
-  		var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=en|es";
+  		var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=en|"+selectLang;
  		
   		var oReq = new XMLHttpRequest();
   		oReq.addEventListener('load', responseText);
@@ -76,15 +78,17 @@ $(document).ready(function()
 	//query.ascending("createdAt");
 	query.find({
 	  success: function(results) {
-	    console.log(results.length);
 	    for(var i = 0; i < results.length; i++)
 	    {
-	    	console.log(results[i].get("sendingNumber"));
+	    	console.log(results[i]);
 	        if(results[i].get("sendingNumber") == OtherNumber)
 	        {
 	        	var elem = '<div class="message--container"> \
 								<p class="message--text"> \
 									' + results[i].get("LanguageTwo") +' \
+								</p> \
+								<p class="message--text-TWO"> \
+									' + results[i].get("LanguageOne") +' \
 								</p> \
 								<span class="message--translate-button"> \
 									? \
@@ -99,14 +103,15 @@ $(document).ready(function()
 								<p class="message--text"> \
 									' + results[i].get("LanguageTwo") +' \
 								</p> \
+								<p class="message--text-TWO"> \
+									' + results[i].get("LanguageOne") +' \
+								</p> \
 								<span class="message--translate-button"> \
 									? \
 								</span> \
 							</div>'
 	    		
 	    		$('#message-conversation').append(elem);
-	    		
-	    		console.log("In here like we are suppose to");
 	        }
 	        else
 	        {

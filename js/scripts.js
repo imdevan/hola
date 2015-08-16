@@ -18,13 +18,30 @@ socket.on('connect',function() {
 	console.log('Client has connected to the server!');
 	
 });
+
+
 	// Add a connect listener
 socket.on('message',function(data) {
 		//Display data on screen
 		//Do something with data
-	var MessageObject = Parse.Object.extend("Message");
-    var messageObject = new MessageObject();
-    messageObject.save({sendingNumber: OtherNumber, BodyNotTranslated: data, BodyTranslated: data});
+		
+		function responseText () {
+   			var translated = JSON.parse(this.responseText).responseData.translatedText;
+   			console.log(translated);
+   			
+   			var MessageObject = Parse.Object.extend("Message");
+    		var messageObject = new MessageObject();
+    		messageObject.save({sendingNumber: OtherNumber, BodyNotTranslated: data, BodyTranslated: translated});
+    		//console.log(translated);
+  		}
+ 
+  		var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=en|es";
+ 
+  		var oReq = new XMLHttpRequest();
+  		oReq.addEventListener('load', responseText);
+  		oReq.open("get", url, true);
+  		oReq.send();
+		
 		
 	console.log('Received a message from the server!',data);
 });
@@ -44,13 +61,14 @@ function sendPhoneNumberToServer(msg) {
 }
 
 var query = new Parse.Query("Message");
-query.ascending("createdAt");
+query.descending("createdAt");
 query.find({
   success: function(results) {
     console.log(results.length);
     for(var i = 0; i < results.length; i++)
     {
-    	console.log(results[i].createdAt);
+        // THIS IS THE DATA results[i].get("key")
+    	console.log(results[i]);
     }
   },
 

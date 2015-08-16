@@ -28,9 +28,21 @@ $input-section-bg: $white;
     &--input-box {
         font-size: 1.5em;
         height: 1.5em;
+        width: 90%;
+        margin: auto;
+        border: 2px solid $input-section-button-color;
         @include breakpoint($med) {
             min-width: 500px;
+            width: auto;
         }
+        &:focus {
+            outline-width: 0;
+            border: 2px solid $input-section-button-color;
+        }
+    }
+    &--button-row {
+        font-size: 2em;
+        margin-top: 1em;
     }
     &--translate-button {
         margin-left: 1em;

@@ -155,19 +155,18 @@ var menu, menuApp = {
         menuList: $(".language-menu--list-item")
     },
     init: function () {
-        console.log("hi");
         menu = this.vars;
         this.bindUIElements();
     },
     bindUIElements: function () {
-        console.log("hi");
         menu.menuButton.click(function () {
-            console.log("hi");
             menu.mainWrapper.addClass("menu-open ");
             menu.menu.addClass("menu-open ");
         });
         menu.menuList.click(function(){
             specifiedLanguage = $(this).attr("id");
+            menu.mainWrapper.removeClass("menu-open ");
+            menu.menu.removeClass("menu-open ");
         });
     }
 }

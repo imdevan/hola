@@ -41,6 +41,7 @@ $menu-section-border-color: rgba(cadetblue, 0.25);
         &:not(:last-child) {
             border-bottom: 1px solid $menu-section-border-color;
         }
+        cursor: pointer;
         height: calc(100%/6);
         padding: 2em;
         box-sizing: border-box;

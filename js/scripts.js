@@ -33,6 +33,7 @@ socket.on('message',function(data) {
     		var messageObject = new MessageObject();
     		messageObject.save({sendingNumber: OtherNumber, BodyNotTranslated: data, BodyTranslated: translated});
     		var wat = translated;
+    		
     		var elem = '<div class="message--container"> \
 							<p class="message--text"> \
 								' + translated +' \

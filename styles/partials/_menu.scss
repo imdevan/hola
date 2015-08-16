@@ -10,6 +10,7 @@
 }
 
 $menu-section-border-color: rgba(cadetblue, 0.25);
+$menu-color: cadetblue;
 .language-menu {
     opacity: 0;
     transform: translateX(-100%);
@@ -25,7 +26,8 @@ $menu-section-border-color: rgba(cadetblue, 0.25);
     }
     transition: transform 0.3s ease-in-out,
     opacity 0.3s ease-in-out;
-    color: #333;
+    color: $menu-color;
+    font-weight: lighter;
     z-index: 3;
     margin: 0;
     padding: 0;

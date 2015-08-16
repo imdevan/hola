@@ -1,7 +1,7 @@
 Parse.initialize("rYhgbAiMXfzb692ANgZXoUVGQkhUOuMSnCY2sHtk", "yTfmNgzwyG2B7OirvNrQG0MqbsNrt9sxEvLyE3Yw");
 					
 var TwilioNumber = "+19152350594";
-var OtherNumber = "+12144035793";
+var OtherNumber = "+15126087014";
 
 var selectLang = 'es';
 
@@ -35,18 +35,26 @@ socket.on('message',function(data) {
     		var messageObject = new MessageObject();
     		messageObject.save({sendingNumber: OtherNumber, LanguageOne: data, LanguageTwo: translated});
     		var wat = translated;
-    		
-    		var elem = '<div class="message--container"> \
-							<p class="message--text"> \
-								' + translated +' \
-							</p> \
-							<span class="message--translate-button"> \
-								? \
-							</span> \
-						</div>'
+						
+			var elem = '<div class="message--container"> \
+								<div class="message--text-container"> \
+									<p class="message--text primary-text"> \
+										' + translated +' \
+									</p> \
+									<p class="message--text secondary-text"> \
+										' + data +' \
+									</p> \
+									</div> \
+									<div class="message--tb-container"> \
+									<span class="message--translate-button"> \
+										? \
+									</span> \
+								</div> \
+							</div>'
     		
     		$('#message-conversation').append(elem);
     		
+    		$("html, body").animate({ scrollTop: $(document).height() }, 1000);
     		
   		}
  		console.log("I received a message!");
@@ -83,32 +91,42 @@ $(document).ready(function()
 	    	console.log(results[i]);
 	        if(results[i].get("sendingNumber") == OtherNumber)
 	        {
+	        	console.log("I'm in here!");
 	        	var elem = '<div class="message--container"> \
-								<p class="message--text"> \
-									' + results[i].get("LanguageTwo") +' \
-								</p> \
-								<p class="message--text-TWO"> \
-									' + results[i].get("LanguageOne") +' \
-								</p> \
-								<span class="message--translate-button"> \
-									? \
-								</span> \
+								<div class="message--text-container"> \
+									<p class="message--text primary-text"> \
+										' + results[i].get("LanguageTwo") +' \
+									</p> \
+									<p class="message--text secondary-text"> \
+										' + results[i].get("LanguageOne") +' \
+									</p> \
+									</div> \
+									<div class="message--tb-container"> \
+									<span class="message--translate-button"> \
+										? \
+									</span> \
+								</div> \
 							</div>'
 	    		
 	    		$('#message-conversation').append(elem);
 	        }
 	        else if(results[i].get("sendingNumber") == TwilioNumber)
 	        {
+	        	console.log("Hah");
 	        	var elem = '<div class="message--container-RIGHT"> \
-								<p class="message--text"> \
-									' + results[i].get("LanguageTwo") +' \
-								</p> \
-								<p class="message--text-TWO"> \
-									' + results[i].get("LanguageOne") +' \
-								</p> \
-								<span class="message--translate-button"> \
-									? \
-								</span> \
+								<div class="message--text-container"> \
+									<p class="message--text primary-text"> \
+										' + results[i].get("LanguageTwo") +' \
+									</p> \
+									<p class="message--text secondary-text"> \
+										' + results[i].get("LanguageOne") +' \
+									</p> \
+									</div> \
+									<div class="message--tb-container"> \
+									<span class="message--translate-button"> \
+										? \
+									</span> \
+								</div> \
 							</div>'
 	    		
 	    		$('#message-conversation').append(elem);

@@ -53,16 +53,22 @@ var data, tb, tBox = {
         oReq.addEventListener('load', function () {
             console.log(JSON.parse(this.responseText).responseData.translatedText);
             sendMessageToServer(OtherNumber, JSON.parse(this.response).responseData.translatedText);
-
-            
-            var elem = '<div class="message--container-RIGHT"> \
-							<p class="message--text"> \
-								' + data +' \
-							</p> \
-							<span class="message--translate-button"> \
-								? \
-							</span> \
-						</div>';
+			
+			var elem = '<div class="message--container-RIGHT"> \
+								<div class="message--text-container"> \
+									<p class="message--text primary-text"> \
+										' + data +' \
+									</p> \
+									<p class="message--text secondary-text"> \
+										' + JSON.parse(this.response).responseData.translatedText +' \
+									</p> \
+									</div> \
+									<div class="message--tb-container"> \
+									<span class="message--translate-button"> \
+										? \
+									</span> \
+								</div> \
+							</div>'
 						
     		  $('#message-conversation').append(elem);
     		  $("html, body").animate({ scrollTop: $(document).height() }, 1000);

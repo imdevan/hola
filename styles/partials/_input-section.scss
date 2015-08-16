@@ -2,7 +2,6 @@ $input-section-border-color: rgba(cadetblue, 0.25);
 $input-section-button-color: rgba(cadetblue, 0.5);
 $input-section-height: 5em;
 $input-section-bg: $white;
-
 ._user-input-section {
     position: fixed;
     bottom: 0;
@@ -25,7 +24,9 @@ $input-section-bg: $white;
     &--input-box {
         font-size: 1.5em;
         height: 1.5em;
-        min-width: 500px;
+        @include breakpoint(600px) {
+            min-width: 355px;
+         }
     }
     &--translate-button {
         margin-left: 1em;

@@ -22,7 +22,7 @@
       restrict: 'E',
       templateUrl: 'components/directives/input-section.html'
     };
-
+    
     return directiveDefinitionObject;
   }
 

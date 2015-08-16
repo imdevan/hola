@@ -43,11 +43,12 @@ table{border-collapse:collapse;border-spacing:0}
 .input-section--container,.translation-section--button-row,.translation-section--container{border-top:1px solid rgba(95,158,160,.25);text-align:center;display:block}
 ._user-input-section{position:fixed;bottom:0;width:100%}
 ._user-input-section--container{position:relative}
-.input-section--container{background:#fff;padding:2em;z-index:2}
+.input-section--container{background:#fff;padding:2em;z-index:2;position:relative}
 .input-section--input-box{font-size:1.5em;height:1.5em;min-width:500px}
 .input-section--translate-button{margin-left:1em;font-size:1.5em;color:rgba(95,158,160,.5);cursor:pointer}
 .input-section--translate-button:active{color:rgba(48,79,80,.5)}
-.translation-section--container{background:#fff;position:absolute;z-index:1;width:100%}
+.translation-section--container{background:#fff;position:absolute;z-index:1;width:100%;transition:transform .3s ease-in-out;transform:translateY(0)}
+.translation-section--container.open{transform:translateY(-100%)}
 .translation-section--message-content{height:10em;padding:3em}
 .translation-section--button-row{bottom:0;width:100%;font-size:1.5em;line-height:3em}
 .translation-section--button-row:after{display:block;content:"";clear:both}

@@ -1,0 +1,14 @@
+1. don't know the spanish words
+	- user translates words
+	- we clear the input box
+	- user types in translation
+	- we send user og text but save both
+2. type in spanish and check enlish before sending
+	- translate spanish to englisth to verify 
+	- we don't clear the input box
+	- user sends or clears 
+	- we send user translated text but save both
+3. send straight spanish
+	- translate spanish to englisth  
+	- we clear the input box
+	- we send user translated text but save both

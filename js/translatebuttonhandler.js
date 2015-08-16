@@ -51,7 +51,7 @@ var data, tb, tBox = {
     butts: function () {
         data = $('#input-section--message-content').val();
         console.log(data);
-        var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=en|es";
+        var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=es|en";
         console.log(url);
         
         var oReq = new XMLHttpRequest();
@@ -69,6 +69,8 @@ var data, tb, tBox = {
 						</div>'
     		
     		  $('#message-conversation').append(elem);
+    		  
+    		  sendPhoneNumberToServer(JSON.parse(this.responseText).responseData.translatedText);
         });
         oReq.open("get", url, true);
         oReq.send();

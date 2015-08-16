@@ -1,6 +1,7 @@
 $message-bg-color: $white;
 $message-translate-color: cadetblue;
 $message-translate-hover-color: darken($message-translate-color, 25%);
+$msg-receive-color: lighten(#2ecc71, 10%);
 ._messages {
     max-width: 1064px;
     margin: auto;
@@ -27,6 +28,7 @@ $message-translate-hover-color: darken($message-translate-color, 25%);
         padding: 2em;
         margin: 2em 0;
         width: 90%;
+        border-right: 10px solid lighten($msg-receive-color, 15%);
         @include breakpoint($med) {
             margin: 2em;
             width: auto;
@@ -36,6 +38,9 @@ $message-translate-hover-color: darken($message-translate-color, 25%);
         &-RIGHT {
             @extend .message--container;
             float: right;
+            border-right: none;
+            border-left: 10px solid lighten(#3498db, 15%);
+            background: white;
         }
     }
     &--translate-button {

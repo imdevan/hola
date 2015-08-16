@@ -1,6 +1,6 @@
 
 // normalize: http://necolas.github.io/normalize.css/
-// @import "../bower_components/components-font-awesome/scss/font-awesome";
+@import "../bower_components/breakpoint-sass/stylesheets/breakpoint";
 
 // normalize: http://necolas.github.io/normalize.css/
 @import "partials/normalize";
@@ -14,3 +14,9 @@
 // message component
 @import "partials/input-section";
 
+// message component
+@import "partials/translation-section";
+
+html{
+	color: #333;
+}

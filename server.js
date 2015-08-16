@@ -30,7 +30,7 @@ var sendingFunction;
 app.post('/sms', function(req, res){
     res.send('POST request to homepage');
     var obj = JSON.parse(JSON.stringify(req.body, null, 2));
-    console.log(obj.Body);
+    console.log('Inside Post ' + obj.Body);
     sendingFunction(obj.Body);
 });
 

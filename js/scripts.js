@@ -32,18 +32,25 @@ socket.on('message',function(data) {
    			var MessageObject = Parse.Object.extend("Message");
     		var messageObject = new MessageObject();
     		messageObject.save({sendingNumber: OtherNumber, BodyNotTranslated: data, BodyTranslated: translated});
-    		//console.log(translated);
+    		var wat = translated;
+    		var elem = '<div class="message--container"> \
+							<p class="message--text"> \
+								' + translated +' \
+							</p> \
+							<span class="message--translate-button"> \
+								? \
+							</span> \
+						</div>'
+    		
+    		$('#message-conversation').append(elem);
   		}
- 
+ 		console.log("I received a message!");
   		var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=en|es";
  
   		var oReq = new XMLHttpRequest();
   		oReq.addEventListener('load', responseText);
   		oReq.open("get", url, true);
   		oReq.send();
-		
-		
-	console.log('Received a message from the server!',data);
 });
 	// Add a disconnect listener
 socket.on('disconnect',function() {

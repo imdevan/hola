@@ -1,6 +1,27 @@
-<div class="input-section--container">
-    <form action="demo_form.asp" method="get">
-        <input id ="input-section--message-content" class="input-section--input-box" type="text" name="fname">
-        <i id="translateandsend-button" class="input-section--translate-button icon-rotate-left" onclick="load()"></i>
-    </form>
+<div class="_user-input-section">
+    <div class="_user-input-section--container">
+        <div id="translation-section-container" class="translation-section--container">
+            <div id="translation-section--message-content" class="translation-section--message-content">
+            </div>
+            <div class="translation-section--button-row">
+                <ul class="translation-section--button-row-list">
+                    <li class="translation-section--button-row-list-item">
+                        <i id="translate-cancel-button" class="translation-section--translate-button-CANCEL fa fa-remove"></i>
+                    </li>
+                    <li class="translation-section--button-row-list-item">
+                        <i id="translate-translated-send-button" class="input-section--translate-button fa fa-send-o"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="input-section--container">
+            <form method="get">
+                <input id="input-section--message-content" class="input-section--input-box" type="text" name="fname">
+                <i id="translate-button" class="input-section--translate-button fa fa-language"></i><i id="translate-check-button" class="input-section--translate-button fa fa-check"></i><i id="translate-send-button" class="input-section--translate-button fa fa-send-o"></i>
+            </form>
+        </div>
+    </div>
+
 </div>
+
+<script type="text/javascript" src="js/translatebuttonhandler.js"></script>

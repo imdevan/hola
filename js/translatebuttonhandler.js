@@ -60,43 +60,65 @@ var data, tb, tBox = {
             console.log(JSON.parse(this.responseText).responseData.translatedText);
             sendMessageToServer(OtherNumber, JSON.parse(this.response).responseData.translatedText);
 
-            var elem =
-                '<div class="message--container-RIGHT"> \
-                            <p class="message--text"> \
-                                ' + data + ' \
-                            </p> \
-                            <span class="message--translate-button"> \
-                                ? \
-                            </span> \
-                        </div>'
+            
+            var elem = '<div class="message--container-RIGHT"> \
+							<p class="message--text"> \
+								' + data +' \
+							</p> \
+							<span class="message--translate-button"> \
+								? \
+							</span> \
+						</div>'
+    		
+    		  $('#message-conversation').append(elem);
+    		  
+    		  var MessageObject = Parse.Object.extend("Message");
+    		  var messageObject = new MessageObject();
+    		  messageObject.save({sendingNumber: TwilioNumber, LanguageOne: JSON.parse(this.response).responseData.translatedText, LanguageTwo: data});
 
-            $('#message-conversation').append(elem);
-
-            var MessageObject = Parse.Object.extend(
-                "Message");
-            var messageObject = new MessageObject();
-            messageObject.save({
-                sendingNumber: TwilioNumber,
-                BodyNotTranslated: data,
-                BodyTranslated: JSON.parse(this.response)
-                    .responseData.translatedText
-            });
-
-            sendPhoneNumberToServer(JSON.parse(this.responseText)
-                .responseData.translatedText);
         });
         oReq.open("get", url, true);
         oReq.send();
+        
+        $('#input-section--message-content').val('');
     },
     bindUIElements: function () {
         tb.translateButton.on('click', function () {
             tb.domObj.addClass("open");
             tb.isOpen = true;
+            
+            data = $('#input-section--message-content').val();
+            
+            var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=en|es";
+            console.log(url);
+            
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener('load', function(){
+                console.log(JSON.parse(this.responseText).responseData.translatedText);
+        		
+                $('#translation-section--message-content').html(JSON.parse(this.responseText).responseData.translatedText);
+            });
+            oReq.open("get", url, true);
+            oReq.send();
         });
 
         tb.checkButton.on('click', function () {
             tb.domObj.addClass("open");
             tb.isOpen = true;
+            
+            data = $('#input-section--message-content').val();
+            
+            var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=es|en";
+            console.log(url);
+            
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener('load', function(){
+                console.log(JSON.parse(this.responseText).responseData.translatedText);
+        		
+                $('#translation-section--message-content').html(JSON.parse(this.responseText).responseData.translatedText);
+            });
+            oReq.open("get", url, true);
+            oReq.send();
         });
 
         tb.cancelButton.on('click', function () {

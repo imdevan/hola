@@ -20,6 +20,7 @@ $input-section-bg: $white;
         z-index: 2;
         position: relative;
         padding: 2em 0.5em;
+        font-size: 0.9em;
         @include breakpoint($med) {
             padding: 2em;
         }

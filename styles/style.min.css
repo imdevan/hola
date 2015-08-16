@@ -48,7 +48,7 @@ to{opacity:1;transform:translateY(0)}
 }
 ._user-input-section{position:fixed;bottom:0;width:100%}
 ._user-input-section--container{position:relative}
-.input-section--container{background:#fff;z-index:2;position:relative;padding:2em .5em}
+.input-section--container{background:#fff;z-index:2;position:relative;padding:2em .5em;font-size:.9em}
 .input-section--input-box{font-size:1.5em;height:1.5em}
 @media (min-width:800px){.input-section--container{padding:2em}
 .input-section--input-box{min-width:500px}

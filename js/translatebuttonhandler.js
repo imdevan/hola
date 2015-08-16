@@ -68,9 +68,10 @@ var data, tb, tBox = {
 							<span class="message--translate-button"> \
 								? \
 							</span> \
-						</div>'
-    		
+						</div>';
+						
     		  $('#message-conversation').append(elem);
+    		  $("html, body").animate({ scrollTop: $(document).height() }, 1000);
     		  
     		  var MessageObject = Parse.Object.extend("Message");
     		  var messageObject = new MessageObject();

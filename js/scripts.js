@@ -44,10 +44,12 @@ socket.on('message',function(data) {
 						</div>'
     		
     		$('#message-conversation').append(elem);
+    		
+    		
   		}
  		console.log("I received a message!");
   		var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=en|es";
- 
+ 		
   		var oReq = new XMLHttpRequest();
   		oReq.addEventListener('load', responseText);
   		oReq.open("get", url, true);
@@ -68,20 +70,54 @@ function sendPhoneNumberToServer(msg) {
 	socket.emit('phoneNumber', msg);
 }
 
-var query = new Parse.Query("Message");
-query.descending("createdAt");
-query.find({
-  success: function(results) {
-    console.log(results.length);
-    for(var i = 0; i < results.length; i++)
-    {
-        // THIS IS THE DATA results[i].get("key")
-    	console.log(results[i]);
-    }
-  },
-
-  error: function(error) {
-    console.log("What the hell just happened!");
-  }
+$(document).ready(function()
+{
+	var query = new Parse.Query("Message");
+	//query.ascending("createdAt");
+	query.find({
+	  success: function(results) {
+	    console.log(results.length);
+	    for(var i = 0; i < results.length; i++)
+	    {
+	    	console.log(results[i].get("sendingNumber"));
+	        if(results[i].get("sendingNumber") == TwilioNumber)
+	        {
+	        	var elem = '<div class="message--container"> \
+								<p class="message--text"> \
+									' + results[i].get("BodyNotTranslated") +' \
+								</p> \
+								<span class="message--translate-button"> \
+									? \
+								</span> \
+							</div>'
+	    		
+	    		$('#message-conversation').append(elem);
+	        }
+	        else if(results[i].get("sendingNumber") == OtherNumber)
+	        {
+	        	var elem = '<div class="message--container-RIGHT"> \
+								<p class="message--text"> \
+									' + results[i].get("BodyTranslated") +' \
+								</p> \
+								<span class="message--translate-button"> \
+									? \
+								</span> \
+							</div>'
+	    		
+	    		$('#message-conversation').append(elem);
+	    		
+	    		console.log("In here like we are suppose to");
+	        }
+	        else
+	        {
+	        	console.log('Why the fuck am I in here');
+	        }
+	    }
+	  },
+	
+	  error: function(error) {
+	    console.log("What the hell just happened!");
+	  }
+	});
 });
 

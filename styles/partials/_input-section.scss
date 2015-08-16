@@ -1,31 +1,43 @@
 $input-section-border-color: rgba(cadetblue, 0.25);
-$input-section-height: 5em;
 $input-section-button-color: rgba(cadetblue, 0.5);
+$input-section-height: 5em;
 $input-section-bg: $white;
+._user-input-section {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    &--container {
+        position: relative;
+    }
+}
 
-.input-section{
-	&--container{
-		position: fixed;
-		background: $input-section-bg;
-		bottom: 0;
-		padding: 2em;
-		display: block;
-		text-align: center;
-		width: 100%;
-		border-top: 1px solid $input-section-border-color;
-	}
-	&--input-box{
-		font-size: 1.5em;
-		height: 1.5em;
-		min-width: 500px;
-	}
-	&--translate-button{
-		margin-left: 1em;
-		font-size: 1.5em;
-		color: $input-section-button-color;
-		cursor: pointer;
-		&:active{
-			color: darken($input-section-button-color, 25%);
-		}
-	}
+.input-section {
+    &--container {
+        background: $input-section-bg;
+        display: block;
+        text-align: center;
+        border-top: 1px solid $input-section-border-color;
+        z-index: 2;
+        position: relative;
+        padding: 2em 0.5em;
+        @include breakpoint($med) {
+            padding: 2em;
+        }
+    }
+    &--input-box {
+        font-size: 1.5em;
+        height: 1.5em;
+        @include breakpoint($med) {
+            min-width: 500px;
+        }
+    }
+    &--translate-button {
+        margin-left: 1em;
+        font-size: 1.5em;
+        color: $input-section-button-color;
+        cursor: pointer;
+        &:active {
+            color: darken($input-section-button-color, 25%);
+        }
+    }
 }

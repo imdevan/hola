@@ -69,17 +69,31 @@ var data, tb, tBox = {
     		  
     		  var MessageObject = Parse.Object.extend("Message");
     		  var messageObject = new MessageObject();
-    		  messageObject.save({sendingNumber: TwilioNumber, BodyNotTranslated: data, BodyTranslated: JSON.parse(this.response).responseData.translatedText});
-    		  
-    		  sendPhoneNumberToServer(JSON.parse(this.responseText).responseData.translatedText);
+    		  messageObject.save({sendingNumber: TwilioNumber, LanguageOne: JSON.parse(this.response).responseData.translatedText, LanguageTwo: data});
         });
         oReq.open("get", url, true);
         oReq.send();
+        
+        $('#input-section--message-content').val('');
     },
     bindUIElements: function () {
         tb.translateButton.on('click', function () {
             tb.domObj.addClass("open");
             tb.isOpen = true;
+            
+            data = $('#input-section--message-content').val();
+            
+            var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=es|en";
+            console.log(url);
+            
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener('load', function(){
+                console.log(JSON.parse(this.responseText).responseData.translatedText);
+        		
+                $('#message-conversation').html(JSON.parse(this.responseText).responseData.translatedText);
+            });
+            oReq.open("get", url, true);
+            oReq.send();
         });
 
         tb.checkButton.on('click', function () {

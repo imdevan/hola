@@ -31,7 +31,7 @@ socket.on('message',function(data) {
    			
    			var MessageObject = Parse.Object.extend("Message");
     		var messageObject = new MessageObject();
-    		messageObject.save({sendingNumber: OtherNumber, BodyNotTranslated: data, BodyTranslated: translated});
+    		messageObject.save({sendingNumber: OtherNumber, LanguageOne: data, LanguageTwo: translated});
     		var wat = translated;
     		
     		var elem = '<div class="message--container"> \
@@ -84,7 +84,7 @@ $(document).ready(function()
 	        {
 	        	var elem = '<div class="message--container"> \
 								<p class="message--text"> \
-									' + results[i].get("BodyTranslated") +' \
+									' + results[i].get("LanguageTwo") +' \
 								</p> \
 								<span class="message--translate-button"> \
 									? \
@@ -97,7 +97,7 @@ $(document).ready(function()
 	        {
 	        	var elem = '<div class="message--container-RIGHT"> \
 								<p class="message--text"> \
-									' + results[i].get("BodyNotTranslated") +' \
+									' + results[i].get("LanguageTwo") +' \
 								</p> \
 								<span class="message--translate-button"> \
 									? \

@@ -62,4 +62,5 @@ to{opacity:1;transform:translateY(0)}
 .translation-section--button-row:after{display:block;content:"";clear:both}
 .translation-section--button-row-list{list-style-type:none;margin:0;padding:0;height:100%;vertical-align:middle}
 .translation-section--button-row-list-item{display:inline-block;list-style-type:none;margin:0 2em;padding:0}
+.translation-section--translate-button-CANCEL{color:#e74c3c}
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#333}

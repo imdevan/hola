@@ -1,4 +1,4 @@
-var tb, tBox = {
+var data, tb, tBox = {
     vars: {
         isOpen: false,
         domObj: $("#translation-section-container"),
@@ -10,23 +10,23 @@ var tb, tBox = {
     init: function () {
         tb = this.vars;
         this.bindUIElements();
+        tb.butts = this.butts;
+    },  
+    responseText: function(){
+            
+            //
     },
-    load: function () {
-        function responseText() {
-            // console.log(this.responseText);
-            console.log(JSON.parse(this.responseText).responseData
-                .translatedText);
-            sendMessageToServer('+15126087014', JSON.parse(
-                this.response).responseData.translatedText);
-        }
-        var data = document.getElementById(
-            "input-section--message-content").value;
-        var url =
-            "https://api.mymemory.translated.net/get?q=" +
-            data + "&langpair=es|en";
-
+    butts: function () {
+        data = $('#input-section--message-content').val();
+        console.log(data);
+        var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=en|es";
+        console.log(url);
+        
         var oReq = new XMLHttpRequest();
-        oReq.addEventListener('load', responseText);
+        oReq.addEventListener('load', function(){
+            console.log(JSON.parse(this.responseText).responseData.translatedText);
+            sendMessageToServer('+15126087014', JSON.parse(this.response).responseData.translatedText);
+        });
         oReq.open("get", url, true);
         oReq.send();
     },
@@ -52,7 +52,7 @@ var tb, tBox = {
         });
 
         tb.sendButton.on('click', function () {
-            this.load();
+            tb.butts();
         });
 
         $(document).keyup(function (e) {
@@ -65,4 +65,4 @@ var tb, tBox = {
     }
 };
 
-tBox.init(); >>> >>> > front - end
+tBox.init();

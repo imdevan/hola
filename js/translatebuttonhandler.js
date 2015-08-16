@@ -160,6 +160,7 @@ var data, tb, tBox = {
 						</div>'
     		
     		  $('#message-conversation').append(elem);
+    		  $("html, body").animate({ scrollTop: $(document).height() }, 1000);
             
             tb.domObj.removeClass("open");
             tb.isOpen = false;

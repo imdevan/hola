@@ -42,24 +42,24 @@ table{border-collapse:collapse;border-spacing:0}
 }
 .message--container-RIGHT{float:right}
 .message--translate-button{border:1px solid #5f9ea0;color:#5f9ea0;cursor:pointer;font-weight:100;border-radius:50%;display:block;height:3em;width:3em;position:absolute;top:0;right:1em;line-height:3em;margin-top:25px;font-size:21px;text-align:center}
-.input-section--container,.translation-section--button-row,.translation-section--container{border-top:1px solid rgba(95,158,160,.25);text-align:center;display:block}
+.input-section--container,.translation-section--button-row,.translation-section--container{border-top:1px solid rgba(95,158,160,.25);display:block}
 @keyframes fadeinup{from{opacity:0;transform:translateY(25px)}
 to{opacity:1;transform:translateY(0)}
 }
 ._user-input-section{position:fixed;bottom:0;width:100%}
 ._user-input-section--container{position:relative}
-.input-section--container{background:#fff;z-index:2;position:relative;padding:2em .5em}
+.input-section--container{background:#fff;text-align:center;z-index:2;position:relative;padding:2em .5em}
 .input-section--input-box{font-size:1.5em;height:1.5em}
 @media (min-width:800px){.input-section--container{padding:2em}
 .input-section--input-box{min-width:500px}
 }
 .input-section--translate-button{margin-left:1em;font-size:1.5em;color:rgba(95,158,160,.5);cursor:pointer}
 .input-section--translate-button:active{color:rgba(48,79,80,.5)}
-.translation-section--container{box-shadow:-10px -10px 30px rgba(0,0,0,.25);background:#fff;position:absolute;z-index:1;width:100%;transition:transform .3s ease-in-out;transform:translateY(0)}
-.translation-section--container.open{transform:translateY(-100%)}
+.translation-section--container{text-align:center;background:#fff;position:absolute;z-index:1;width:100%;transition:transform .3s ease-in-out;transform:translateY(0)}
+.translation-section--container.open{box-shadow:-10px -10px 30px rgba(0,0,0,.25);transform:translateY(-100%)}
 .translation-section--message-content{height:10em;padding:3em}
-.translation-section--button-row{bottom:0;width:100%;font-size:1.5em;line-height:3em}
+.translation-section--button-row{text-align:right;bottom:0;width:100%;font-size:1.5em;line-height:3em}
 .translation-section--button-row:after{display:block;content:"";clear:both}
 .translation-section--button-row-list{list-style-type:none;margin:0;padding:0;height:100%;vertical-align:middle}
-.translation-section--button-row-list-item{display:inline-block;list-style-type:none;margin:0 2em;padding:0}
+.translation-section--button-row-list-item{display:inline-block;list-style-type:none;margin:0 1em}
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#333}

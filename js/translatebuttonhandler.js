@@ -3,7 +3,8 @@ var tb, tBox = {
         isOpen: false,
         domObj: $("#translation-section-container"),
         translateButton: $("#translate-button"),
-        cancelButton: $("#translate-cancel-button")
+        checkButton: $("#translate-check-button"),
+        cancelButton: $("#translate-cancel-button"),
     },
     init: function () {
         tb = this.vars;
@@ -11,13 +12,13 @@ var tb, tBox = {
     },
     bindUIElements: function () {
         tb.translateButton.on('click', function () {
-            if (tb.isOpen) {
-                tb.domObj.removeClass("open");
-                tb.isOpen = false;
-            } else {
-                tb.domObj.addClass("open");
-                tb.isOpen = true;
-            }
+            tb.domObj.addClass("open");
+            tb.isOpen = true;
+        });
+
+        tb.checkButton.on('click', function () {
+            tb.domObj.addClass("open");
+            tb.isOpen = true;
         });
 
         tb.cancelButton.on('click', function () {

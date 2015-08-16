@@ -23,6 +23,7 @@ $translation-cancel-color: #DE6262;
     &--message-content {
         height: 10em;
         padding: 3em;
+        visibility: none;
     }
     &--button-row {
         border-top: 1px solid $translation-section-border-color;

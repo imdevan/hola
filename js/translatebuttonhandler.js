@@ -171,6 +171,34 @@ var data, tb, tBox = {
                 tb.domObj.removeClass("open");
                 tb.isOpen = false;
             }
+            if (e.keyCode == 13 && ($('#input-section--message-content').val != '') && !tb.isOpen) {
+                tb.sendMessage();
+                tb.domObj.removeClass("open");
+                tb.isOpen = false;
+            }
+            else if (e.keyCode == 13 && ($('#input-section--message-content').val != '') && tb.isOpen) {
+                var MessageObject = Parse.Object.extend("Message");
+        		var messageObject = new MessageObject();
+        		messageObject.save({sendingNumber: TwilioNumber, LanguageOne: data, LanguageTwo: otherdata});
+                
+                sendMessageToServer(OtherNumber, data);
+                
+                var elem = '<div class="message--container-RIGHT"> \
+    							<p class="message--text"> \
+    								' + otherdata +' \
+    							</p> \
+    							<span class="message--translate-button"> \
+    								? \
+    							</span> \
+    						</div>'
+        		
+        		  $('#message-conversation').append(elem);
+                
+                tb.domObj.removeClass("open");
+                tb.isOpen = false;
+                
+                $('#input-section--message-content').val('');
+            }
         });
 
     }

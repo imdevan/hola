@@ -14,17 +14,22 @@ $input-section-bg: $white;
 .input-section {
     &--container {
         background: $input-section-bg;
-        padding: 2em;
         display: block;
         text-align: center;
         border-top: 1px solid $input-section-border-color;
         z-index: 2;
         position: relative;
+        padding: 2em 0.5em;
+        @include breakpoint($med) {
+            padding: 2em;
+        }
     }
     &--input-box {
         font-size: 1.5em;
         height: 1.5em;
-        
+        @include breakpoint($med) {
+            min-width: 500px;
+        }
     }
     &--translate-button {
         margin-left: 1em;

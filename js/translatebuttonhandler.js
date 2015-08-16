@@ -43,8 +43,9 @@ var data, tb, tBox = {
         tb = this.vars;
         this.bindUIElements();
         tb.sendMessage = this.sendMessage;
-    },  
+    },
     sendMessage: function () {
+        
         data = $('#input-section--message-content').val();
         console.log(data);
         var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=es|en";

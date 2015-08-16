@@ -16,7 +16,7 @@ var tb, tBox = {
             // console.log(this.responseText);
             console.log(JSON.parse(this.responseText).responseData
                 .translatedText);
-            sendMessageToServer('+12144035793', JSON.parse(
+            sendMessageToServer('+15126087014', JSON.parse(
                 this.response).responseData.translatedText);
         }
         var data = document.getElementById(

@@ -44,6 +44,8 @@ socket.on('message',function(data) {
 						</div>'
     		
     		$('#message-conversation').append(elem);
+    		
+    		
   		}
  		console.log("I received a message!");
   		var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=en|es";

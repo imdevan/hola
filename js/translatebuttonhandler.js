@@ -58,6 +58,17 @@ var data, tb, tBox = {
         oReq.addEventListener('load', function(){
             console.log(JSON.parse(this.responseText).responseData.translatedText);
             sendMessageToServer('+15126087014', JSON.parse(this.response).responseData.translatedText);
+            
+            var elem = '<div class="message--container-RIGHT"> \
+							<p class="message--text"> \
+								' + data +' \
+							</p> \
+							<span class="message--translate-button"> \
+								? \
+							</span> \
+						</div>'
+    		
+    		  $('#message-conversation').append(elem);
         });
         oReq.open("get", url, true);
         oReq.send();

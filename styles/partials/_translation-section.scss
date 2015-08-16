@@ -1,7 +1,9 @@
 $translation-section-border-color: rgba(cadetblue, 0.25);
 $translation-section-button-color: rgba(cadetblue, 0.5);
 $translation-section-bg: $white;
+$translation-send-color: lighten(#2ecc71, 10%);
 $translation-cancel-color: #DE6262;
+
 .translation-section {
     &--container {
         border-top: 1px solid $translation-section-border-color;
@@ -21,6 +23,7 @@ $translation-cancel-color: #DE6262;
     &--message-content {
         height: 10em;
         padding: 3em;
+        visibility: none;
     }
     &--button-row {
         border-top: 1px solid $translation-section-border-color;
@@ -50,6 +53,9 @@ $translation-cancel-color: #DE6262;
         padding: 0;
     }
     &--translate-button {
+        &-SEND {
+            color: $translation-send-color;
+        }
         &-CANCEL {
             color: $translation-cancel-color;
         }

@@ -6,8 +6,7 @@ $message-translate-hover-color: darken($message-translate-color, 25%);
     margin: auto;
     height: 100%;
     width: 100%;
-    overflow-y: scroll;
-    padding-bottom: 5em;
+    padding-bottom: 8em;
     vertical-align: bottom;
     &:after {
         display: block;

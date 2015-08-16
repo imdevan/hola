@@ -42,13 +42,9 @@ var data, tb, tBox = {
     init: function () {
         tb = this.vars;
         this.bindUIElements();
-        tb.butts = this.butts;
+        tb.sendMessage = this.sendMessage;
     },  
-    responseText: function(){
-            
-            //
-    },
-    butts: function () {
+    sendMessage: function () {
         data = $('#input-section--message-content').val();
         console.log(data);
         var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=es|en";
@@ -101,7 +97,7 @@ var data, tb, tBox = {
         });
 
         tb.sendButton.on('click', function () {
-            tb.butts();
+            tb.sendMessage();
         });
 
         $(document).keyup(function (e) {

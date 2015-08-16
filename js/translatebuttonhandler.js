@@ -52,7 +52,7 @@ var data, tb, tBox = {
 
         data = $('#input-section--message-content').val();
         console.log(data);
-        var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=es|en";
+        var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair="+selectLang+"|en";
         console.log(url);
 
         var oReq = new XMLHttpRequest();
@@ -89,7 +89,7 @@ var data, tb, tBox = {
             
             data = $('#input-section--message-content').val();
             
-            var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=en|es";
+            var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=en|"+selectLang;
             console.log(url);
             
             var oReq = new XMLHttpRequest();
@@ -108,7 +108,7 @@ var data, tb, tBox = {
             
             data = $('#input-section--message-content').val();
             
-            var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=es|en";
+            var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair="+selectLang+"|en";
             console.log(url);
             
             var oReq = new XMLHttpRequest();
@@ -164,7 +164,7 @@ var menu, menuApp = {
             menu.menu.addClass("menu-open ");
         });
         menu.menuList.click(function(){
-            specifiedLanguage = $(this).attr("id");
+            selectLang = $(this).attr("id");
             menu.mainWrapper.removeClass("menu-open ");
             menu.menu.removeClass("menu-open ");
         });

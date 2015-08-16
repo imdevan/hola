@@ -80,11 +80,11 @@ $(document).ready(function()
 	    for(var i = 0; i < results.length; i++)
 	    {
 	    	console.log(results[i].get("sendingNumber"));
-	        if(results[i].get("sendingNumber") == TwilioNumber)
+	        if(results[i].get("sendingNumber") == OtherNumber)
 	        {
 	        	var elem = '<div class="message--container"> \
 								<p class="message--text"> \
-									' + results[i].get("BodyNotTranslated") +' \
+									' + results[i].get("BodyTranslated") +' \
 								</p> \
 								<span class="message--translate-button"> \
 									? \
@@ -93,11 +93,11 @@ $(document).ready(function()
 	    		
 	    		$('#message-conversation').append(elem);
 	        }
-	        else if(results[i].get("sendingNumber") == OtherNumber)
+	        else if(results[i].get("sendingNumber") == TwilioNumber)
 	        {
 	        	var elem = '<div class="message--container-RIGHT"> \
 								<p class="message--text"> \
-									' + results[i].get("BodyTranslated") +' \
+									' + results[i].get("BodyNotTranslated") +' \
 								</p> \
 								<span class="message--translate-button"> \
 									? \

@@ -23,17 +23,9 @@ function load() {
     oReq.send();
 }
 
-// { Phonenumber : nunmber, origionaltext : data, translatedtext: data}
 
-// {phonenumber: number,
-//   conversation:{
-//     [message:{
-//       sent/received
-
-//     }]
-
-//   }
-
+// TRANSLATION
+// ==============================================================================
 var otherdata = '';
 var data, tb, tBox = {
     vars: {
@@ -208,6 +200,9 @@ var data, tb, tBox = {
 
 tBox.init();
 
+// MENU
+// ==============================================================================
+
 var menu, menuApp = {
     vars: {
         menuButton: $("#translate-change-lang-button"),
@@ -232,3 +227,4 @@ var menu, menuApp = {
     }
 }
 menuApp.init();
+

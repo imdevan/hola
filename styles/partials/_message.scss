@@ -29,6 +29,24 @@ $msg-receive-color: lighten(#2ecc71, 10%);
         margin: 2em 0;
         width: 90%;
         border-right: 10px solid lighten($msg-receive-color, 15%);
+        .primary-text {
+            opacity: 1;
+            transform: translateY(-50%);
+        }
+        .secondary-text {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+        &.view-translation {
+            .primary-text {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            .secondary-text {
+                opacity: 1;
+                transform: translateY(-100%);
+            }
+        }
         @include breakpoint($med) {
             margin: 2em;
             width: auto;
@@ -43,24 +61,23 @@ $msg-receive-color: lighten(#2ecc71, 10%);
             background: white;
         }
     }
+    &--text{
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+    &--text-container {
+        float: left;
+    }
     &--translate-button {
         border: 1px solid $message-translate-color;
         color: $message-translate-color;
-        cursor: pointer;
-        font-weight: 100;
         border-radius: 50%;
-        display: block;
+        text-align: center;
         height: 3em;
-        width: 3em;
-        position: absolute;
-        top: 0em;
-        right: 1em;
         line-height: 3em;
-        text-align: center;
-        margin-top: 25px;
-        font-size: 21px;
-        text-align: center;
-        &:hover {}
+        width: 3em;
+        display: inline-block;
+        float: right;
+        cursor: pointer;
     }
 }
 

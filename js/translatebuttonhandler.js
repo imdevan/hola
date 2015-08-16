@@ -83,14 +83,14 @@ var data, tb, tBox = {
             
             data = $('#input-section--message-content').val();
             
-            var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=es|en";
+            var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=en|es";
             console.log(url);
             
             var oReq = new XMLHttpRequest();
             oReq.addEventListener('load', function(){
                 console.log(JSON.parse(this.responseText).responseData.translatedText);
         		
-                $('#message-conversation').html(JSON.parse(this.responseText).responseData.translatedText);
+                $('#translation-section--message-content').html(JSON.parse(this.responseText).responseData.translatedText);
             });
             oReq.open("get", url, true);
             oReq.send();
@@ -99,6 +99,20 @@ var data, tb, tBox = {
         tb.checkButton.on('click', function () {
             tb.domObj.addClass("open");
             tb.isOpen = true;
+            
+            data = $('#input-section--message-content').val();
+            
+            var url = "https://api.mymemory.translated.net/get?q=" + data + "&langpair=es|en";
+            console.log(url);
+            
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener('load', function(){
+                console.log(JSON.parse(this.responseText).responseData.translatedText);
+        		
+                $('#translation-section--message-content').html(JSON.parse(this.responseText).responseData.translatedText);
+            });
+            oReq.open("get", url, true);
+            oReq.send();
         });
 
         tb.cancelButton.on('click', function () {

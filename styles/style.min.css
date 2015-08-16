@@ -70,7 +70,7 @@ to{opacity:1;transform:translateY(0)}
 .main-wrapper.menu-open{-webkit-filter:blur(5px);-moz-filter:blur(5px);-o-filter:blur(5px);-ms-filter:blur(5px);filter:blur(5px)}
 .language-menu{opacity:0;transform:translateX(-100%);background:rgba(255,255,255,.6);-webkit-filter:blur(0);-moz-filter:blur(0);-o-filter:blur(0);-ms-filter:blur(0);filter:blur(0);transition:transform .3s ease-in-out,opacity .3s ease-in-out;color:#333;z-index:3;margin:0;padding:2em 0 0;position:fixed;box-sizing:border-box;top:0;height:100%;width:100%;text-align:center}
 .language-menu.menu-open{opacity:1;transform:translateX(0)}
-.language-menu--list-item{width:100%;height:calc(100%/6);padding:2em;box-sizing:border-box;display:inline-block}
+.language-menu--list-item{width:100%;cursor:pointer;height:calc(100%/6);padding:2em;box-sizing:border-box;display:inline-block}
 .language-menu--list-item:not(:last-child){border-bottom:1px solid rgba(95,158,160,.25)}
 .language-menu--list-item-content{display:inline-block;font-size:3em;height:100%}
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#333}

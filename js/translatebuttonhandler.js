@@ -57,7 +57,7 @@ var data, tb, tBox = {
         var oReq = new XMLHttpRequest();
         oReq.addEventListener('load', function(){
             console.log(JSON.parse(this.responseText).responseData.translatedText);
-            sendMessageToServer('+15126087014', JSON.parse(this.response).responseData.translatedText);
+            sendMessageToServer(OtherNumber, JSON.parse(this.response).responseData.translatedText);
             
             var elem = '<div class="message--container-RIGHT"> \
 							<p class="message--text"> \
@@ -69,6 +69,10 @@ var data, tb, tBox = {
 						</div>'
     		
     		  $('#message-conversation').append(elem);
+    		  
+    		  var MessageObject = Parse.Object.extend("Message");
+    		  var messageObject = new MessageObject();
+    		  messageObject.save({sendingNumber: TwilioNumber, BodyNotTranslated: data, BodyTranslated: JSON.parse(this.response).responseData.translatedText});
     		  
     		  sendPhoneNumberToServer(JSON.parse(this.responseText).responseData.translatedText);
         });

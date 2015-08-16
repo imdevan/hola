@@ -13,6 +13,7 @@ $translation-section-bg: $white;
         transition: transform 0.3s ease-in-out;
         transform: translateY(0%);
         &.open {
+            box-shadow: -10px -10px 30px rgba(black, 0.25);
             transform: translateY(-100%);
         }
     }
@@ -44,7 +45,7 @@ $translation-section-bg: $white;
     &--button-row-list-item {
         display: inline-block;
         list-style-type: none;
-        margin: 0;
+        margin: 0 2em;
         padding: 0;
     }
 }

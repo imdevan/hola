@@ -21,12 +21,15 @@ $message-translate-hover-color: darken($message-translate-color, 25%);
         float: left;
         clear: both;
         min-width: 20em;
-        margin: 2em;
         padding: 2em;
         background: $message-bg-color;
         box-shadow: 10px 10px 30px rgba(black, 0.25);
         position: relative;
         animation: fadeinup 2s;
+        margin: 2em 0;
+        @include breakpoint($med) {
+            margin: 2em;
+        }
         &-RIGHT {
             @extend .message--container;
             float: right;
@@ -50,9 +53,7 @@ $message-translate-hover-color: darken($message-translate-color, 25%);
         margin-top: 25px;
         font-size: 21px;
         text-align: center;
-        &:hover{
-
-        }
+        &:hover {}
     }
 }
 
@@ -66,6 +67,7 @@ $message-translate-hover-color: darken($message-translate-color, 25%);
         transform: translateY(0px);
     }
 }
+
 body {
     background: white;
 }

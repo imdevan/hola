@@ -70,7 +70,12 @@ var data, tb, tBox = {
 								</div> \
 							</div>'
 						
-    		  $('#message-conversation').append(elem);
+    		  $('#message-conversation').append(elem);   	
+                $(".message--translate-button").unbind('click');
+                $(".message--translate-button").on('click', function () {
+                    console.log('click');
+                    $(this).parent().parent().toggleClass("view-translation");
+                });
     		  $("html, body").animate({ scrollTop: $(document).height() }, 1000);
     		  
     		  var MessageObject = Parse.Object.extend("Message");
@@ -147,17 +152,7 @@ var data, tb, tBox = {
     		messageObject.save({sendingNumber: TwilioNumber, LanguageOne: data, LanguageTwo: otherdata});
             
             sendMessageToServer(OtherNumber, data);
-            
-            var elem = '<div class="message--container-RIGHT"> \
-							<p class="message--text"> \
-								' + otherdata +' \
-							</p> \
-							<span class="message--translate-button"> \
-								? \
-							</span> \
-						</div>'
-    		
-    		  $('#message-conversation').append(elem);
+            	c
     		  $("html, body").animate({ scrollTop: $(document).height() }, 1000);
             
             tb.domObj.removeClass("open");
@@ -183,17 +178,30 @@ var data, tb, tBox = {
                 
                 sendMessageToServer(OtherNumber, data);
                 
-                var elem = '<div class="message--container-RIGHT"> \
-    							<p class="message--text"> \
-    								' + otherdata +' \
-    							</p> \
-    							<span class="message--translate-button"> \
-    								? \
-    							</span> \
-    						</div>'
-        		
-        		  $('#message-conversation').append(elem);
-                
+			var elem = '<div class="message--container-RIGHT"> \
+								<div class="message--text-container"> \
+									<p class="message--text primary-text"> \
+										' + otherdata +' \
+									</p> \
+									<p class="message--text secondary-text"> \
+										' + data +' \
+									</p> \
+									</div> \
+									<div class="message--tb-container"> \
+									<span class="message--translate-button"> \
+										? \
+									</span> \
+								</div> \
+							</div>'
+						
+    		  $('#message-conversation').append(elem);   	
+                $(".message--translate-button").unbind('click');
+                $(".message--translate-button").on('click', function () {
+                    console.log('click');
+                    $(this).parent().parent().toggleClass("view-translation");
+                });
+    		  $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+    		  
                 tb.domObj.removeClass("open");
                 tb.isOpen = false;
                 

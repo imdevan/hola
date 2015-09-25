@@ -1,7 +1,12 @@
 Parse.initialize("rYhgbAiMXfzb692ANgZXoUVGQkhUOuMSnCY2sHtk", "yTfmNgzwyG2B7OirvNrQG0MqbsNrt9sxEvLyE3Yw");
 					
 var TwilioNumber = "+19152350594";
-var OtherNumber = "+15126087014";
+var OtherNumber = "+12144035793";
+
+$('#phonenumberbutton').click(function()
+{
+	OtherNumber = $('textfieldphone').val();
+})
 
 var selectLang = 'es';
 
@@ -52,8 +57,13 @@ socket.on('message',function(data) {
 								</div> \
 							</div>'
     		
-    		$('#message-conversation').append(elem);
-    		
+    		$('#message-conversation').append(elem);	 
+			    		
+			$(".message--translate-button").unbind('click');
+			$(".message--translate-button").on('click', function () {
+			    console.log('click');
+			    $(this).parent().parent().toggleClass("view-translation");
+			});
     		$("html, body").animate({ scrollTop: $(document).height() }, 1000);
     		
   		}
@@ -108,7 +118,13 @@ $(document).ready(function()
 								</div> \
 							</div>'
 	    		
-	    		$('#message-conversation').append(elem);
+	    		$('#message-conversation').append(elem);	    
+				$(".message--translate-button").unbind('click');
+				$(".message--translate-button").on('click', function () {
+				    console.log('click');
+				    $(this).parent().parent().toggleClass("view-translation");
+				});		
+	    	
 	        }
 	        else if(results[i].get("sendingNumber") == TwilioNumber)
 	        {
@@ -127,9 +143,15 @@ $(document).ready(function()
 										? \
 									</span> \
 								</div> \
-							</div>'
+							</div>';
 	    		
 	    		$('#message-conversation').append(elem);
+	    		
+				$(".message--translate-button").unbind('click');
+				$(".message--translate-button").on('click', function () {
+				    console.log('click');
+				    $(this).parent().parent().toggleClass("view-translation");
+				});
 	        }
 	        else
 	        {
